@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS -->
+    <link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>Chitter Live Chat</h1>
+      </div>
+      <div>
+        <h3>~<%= @user.name %>(<%= @user.username %>)</h3>
+      </div>
+    </header>
+    <div class="new-peep col-xs-10 col-s-8 col-6">
+      <h4>Reply To Peep <br>
+        as ~<%= @user.name %>(<%= @user.username %>)</h4>
+      <form class="peep-window" action="/peeps/<%= @peep.id %>" method="POST">
+        <div class="textbox">
+          <input class="textbox" type="text" name="content" placeholder="Write your reply here...">
+        </div>
+        <div class="submit">
+          <button type="submit">Reply To Peep</button>
+        </div>
+      </form>
+    </div>
+    <footer>
+      <div class="options">
+        <% if @user.name == "Anonymous" %>
+          <div class="send">
+            <form action="/" method="GET">
+              <button type="submit">Return To Live Chat</button>
+            </form>
+          </div>
+          <div class="log">
+            <form action="/signup" method="GET">
+              <button type="submit">Sign Up</button>
+            </form>
+            <form action="/login" method="GET">
+              <button type="submit">Log In</button>
+            </form>
+          <% else %>
+            <div class="send">
+              <form action="/" method="GET">
+                <button type="submit">Return To Live Chat</button>
+              </form>
+            </div>
+            <div class="log">
+              <form action="/logout" method="GET">
+                <button type="submit">Log Out</button>
+              </form>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

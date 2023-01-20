@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS -->
+    <link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>Chitter Live Chat</h1>
+      </div>
+      <div>
+        <h3>~ <%= @user.name %>(<%= @user.username %>)</h3>
+      </div>
+    </header>
+    <div class="new-peep col-xs-10 col-s-8 col-6">
+      <h4>Log Into Account</h4>
+      <form class="peep-window" action="/login" method="POST">
+        <div class="login">
+          <label for="username">Username</label>
+          <input class="textbox-mini" type="text" name="username" minlength = "4" maxlength = "25" pattern="^[a-zA-Z]+[a-zA-Z0-9.$@£_%+-]+$" required>
+          <label for="password">Password</label>
+          <input class="textbox-mini" type="password" name="password" minlength="8" maxlength = "32" pattern = "^[a-zA-Z0-9!@#\$%\^\&*_=+-]{8,12}+$" required>
+          <a class="forgot" href="/recover">Forgot email or password?</a>
+        </div>
+        <button class="signup" type="submit">Log In</button>
+      </form>
+    </div>
+    <footer>
+      <div class="options">
+        <div class="send">
+          <form action="/" method="GET">
+            <button type="submit">Return To Live Chat</button>
+          </form>
+        </div>
+        <div class="log">
+          <form action="/signup" method="GET">
+            <button type="submit">Sign Up</button>
+          </form>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

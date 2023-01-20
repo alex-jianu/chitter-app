@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- CSS -->
+    <link href="<%= url('/style.css') %>" rel="stylesheet" type="text/css" />
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>Admin Page</h1>
+      </div>
+      <div>
+        <h3>~<%= @user.name %>(<%= @user.username %>)</h3>
+      </div>
+    </header>
+    <div class="chat col-7 col-s-9 col-xs-11">
+      <% @accounts.each do |account|%>
+        <div class="peep c<%= (account.id.to_i % 3 + 1).to_s %>">
+          <p class="peep"><span>Username - <%= account.username%>
+            </span><span class="peep-time">Email - <%= account.email%></span></p>
+          <p class="peep"><span>Name - <%= account.name%>
+            </span><span class="peep-time">PW - <%= account.password%></span></p>
+        </a>
+      </div>
+    <%end%>
+  </div>
+  <footer>
+    <div class="options">
+      <% if @user.name == "Anonymous" %>
+        <div class="send">
+          <form action="/peeps/new" method="GET">
+            <button type="submit">Send Anonymous Peep</button>
+          </form>
+        </div>
+        <div class="log">
+          <form action="/signup" method="GET">
+            <button type="submit">Sign Up</button>
+          </form>
+          <form action="/login" method="GET">
+            <button type="submit">Log In</button>
+          </form>
+        <% else %>
+          <div class="send">
+            <form action="/peeps/new" method="GET">
+              <button type="submit">Send Peep</button>
+            </form>
+          </div>
+          <div class="log">
+            <form action="/logout" method="GET">
+              <button type="submit">Log Out</button>
+            </form>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>
