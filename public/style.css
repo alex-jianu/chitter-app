@@ -12,7 +12,9 @@ a{
 }
 
 a.peep{
+    width: 100%;
     display: flex;
+    flex-direction: column;
     justify-content: space-between;
 }
 
@@ -65,10 +67,18 @@ div.chat{
 
 div.container {
     display: flex;
+    flex-direction: row;
     justify-content: space-around;
     margin: 0;
     padding: 0;
 }
+
+div.content-time-replies{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-between;
+}
+
 
 div.error{
     position: absolute;
@@ -110,6 +120,7 @@ div.options{
 }
 
 div.peep{
+    overflow:visible;
     padding: 1%;
     background-color: #f4e7eb;
     border: solid;
@@ -170,11 +181,19 @@ div.textbox{
 
 }
 
+div.time-replies{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
 div.username-content{
     display: flex;
     flex-direction: column;
     justify-content: space-around;
 }
+
+
 
 /* forms */
 
@@ -235,10 +254,9 @@ label{
 /* paragraphs */
 
 p.content{
+    word-wrap: break-word;
     font-weight: bolder;
     font-size: large;
-    position: relative;
-    left: 10%;
 }
 
 p.username{
@@ -263,8 +281,6 @@ p.time{
 
 span.peep-content{
     font-weight: bolder;
-    position: relative;
-    left: 5%;
 }
 
 span.peep-time{
