@@ -102,7 +102,7 @@ class Application < Sinatra::Base
         tagged_account = AccountRepository.new.all.find{|acc| word.include?(acc.username)}
 
         Pony.mail :to => "#{tagged_account.email}",
-            body: "#{peep.content}\n    ~#{peep.author}\n\nIn case you wanted to know...\n\n٩(˘◡˘)۶\nChitterLiveChat <3"
+            body: "See it here:\nhttps://chitter-app.onrender.com/peeps/#{peep.id}\n\n\nIn case you wanted to know...\n\n٩(˘◡˘)۶\nChitterLiveChat <3"
       end
     end
 
