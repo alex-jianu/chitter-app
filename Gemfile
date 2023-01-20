@@ -10,3 +10,5 @@ gem "webrick", "~> 1.7"
 gem "rackup", "~> 0.1.0"
 
 gem "rspec", "~> 3.12"
+
+gem "pg", "~> 1.4"
