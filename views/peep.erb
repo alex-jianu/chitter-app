@@ -17,20 +17,39 @@
       </div>
     </header>
     <div class="chat col-7 col-s-9 col-xs-11">
-      <div class="peep">
-        <p class="peep"><span>~<%= @peep.author%> peep'd
-          </span><span class="peep-time"><%= @peep.time.split(" ")[0]%></span></p>
-        <p class="peep">
-          <span class="peep-content"><%= @peep.content%></span><span class="peep-time"><%= @peep.time.split(" ")[1]%></span>
-        </p>
+      <div class="peep c<%= (@peep.id.to_i % 3 + 1).to_s %>">
+        <a class="peep" href="/peeps/<%= @peep.id %>">
+          <div class="username col-xs-8 col-s-8 col-8">
+            <p class="username">~<%=@peep.author%></p>
+          </div>
+          <div class="content-time-replies">
+            <div class="content col-xs-8 col-s-8 col-8">
+              <p class="content"><%=@peep.content%></p>
+            </div>
+            <div class="time-replies col-xs-3 col-s-3 col-3">
+              <p class="time"><%= @peep.time.split(" ")[0]%></p>
+              <p class="time"><%= @peep.time.split(" ")[1]%></p>
+              <p class="replies"><%= @replies.select{|reply| reply.peep_id == @peep.id}.length%> <% if @replies.select{|reply| reply.peep_id == @peep.id}.length == 1 %> Reply <% else %> Replies <% end %></p>
+            </div>
+          </div>
+        </a>
       </div>
       <% @replies.each do |reply|%>
-        <div class="peep reply c<%= (reply.id.to_i % 3 + 1).to_s %> col-xs-11 col-s-10 col-9">
-          <p class="peep"><span>~<%= reply.author%> peep'd
-            </span><span class="peep-time"><%= reply.time.split(" ")[0]%></span></p>
-          <p class="peep">
-            <span class="peep-content"><%= reply.content%></span><span class="peep-time"><%= reply.time.split(" ")[1]%></span>
-          </p>
+        <div class="peep reply c<%= (reply.id.to_i % 3 + 1).to_s%> col-xs-10 col-s-10 col-10">
+          <a class="peep" href="/peeps/<%= reply.id %>">
+            <div class="username col-xs-8 col-s-8 col-8">
+              <p class="username">~<%=reply.author%></p>
+            </div>
+            <div class="content-time-replies">
+              <div class="content col-xs-8 col-s-8 col-8">
+                <p class="content"><%=reply.content%></p>
+              </div>
+              <div class="time-replies col-xs-3 col-s-3 col-3">
+                <p class="time"><%= reply.time.split(" ")[0]%></p>
+                <p class="time"><%= reply .time.split(" ")[1]%></p>
+              </div>
+            </div>
+          </a>
         </div>
       <% end %>
     </div>
