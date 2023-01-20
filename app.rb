@@ -42,10 +42,13 @@ class Application < Sinatra::Base
 
   
   get '/' do
+    @replies = ReplyRepository.new.all
     if session[:user] == nil
-      session[:user] = Account.new
-      session[:user].name = 'Anonymous'
-      session[:user].username = 'user' + (AccountRepository.new.all.length+1).to_s
+      anon = Account.new
+      anon.name = 'Anonymous'
+      anon.username = 'user' + (AccountRepository.new.all.length+1).to_s
+      AccountRepository.new.create(anon)
+      session[:user] = AccountRepository.new.all.find{|acc| acc.username == anon.username}
     end
 
     @user = session[:user]

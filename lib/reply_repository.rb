@@ -7,7 +7,7 @@ class ReplyRepository
         @replies = []
 
         result_set.each do |rec|
-            reply = Peep.new
+            reply = Reply.new
             reply.id = rec['id']
             reply.content = rec['content']
             reply.peep_id = rec['peep_id']
