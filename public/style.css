@@ -16,6 +16,7 @@ a.peep{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    row-gap: 10px;
 }
 
 a.forgot{
@@ -182,9 +183,11 @@ div.textbox{
 }
 
 div.time-replies{
+    text-align: right;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    
 }
 
 div.username-content{
